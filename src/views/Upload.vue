@@ -4,7 +4,8 @@
         Importar HVI
     </h1>
     <input id="archivoExcel" type="file" multiple @change="subirExcel()"/>
-    <button v-on:click="probarExcel()" class=" h-16 w-16 bg-blue-600">Exportar datos</button>
+    <button v-if="datos" v-on:click="probarExcel()" class=" h-16 w-16 bg-blue-600">Exportar datos</button>
+    <button v-if="recap" v-on:click="generarRecap()" class=" h-16 w-16 bg-red-600">Generar RECAP</button>
    </div>
    <div class="flex items-start justify-center h-screen">
         <table class="table w-3/4">
@@ -40,11 +41,14 @@
     //import { ref } from "vue";
     
 import readXlsFile from "read-excel-file" 
+import router from "@/router/index.js";
 
 export default{
   
   data: () => ({
     items: [],
+    datos: false,
+    recap: false
   }), 
         
   methods:{
@@ -53,15 +57,16 @@ export default{
           readXlsFile(input.files[0]).then((rows) => {
           this.items = rows;
           })
+          this.datos = true
       },      
 
       probarExcel(){
-        let jsonDatos =  this.items         
-
-            console.log(jsonDatos)
+        let jsonDatos =  this.items 
+        console.log(jsonDatos)
+        this.recap = true
       },
 
-         enviarExcel(){
+      enviarExcel(){
         let jsonDatos =  this.items
         
             axios.post('http://localhost:8000/api/User/datos', jsonDatos).then(res =>{
@@ -71,6 +76,10 @@ export default{
                 }                               
             })
       }, 
+
+      generarRecap(){        
+        router.push("/recap")
+      }
   }
       
 }     

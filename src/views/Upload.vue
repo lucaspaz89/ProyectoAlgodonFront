@@ -17,6 +17,7 @@
     <table class="table w-3/4">
       <thead>
         <tr>
+          <th>#</th>
           <th class="w-32">UHML</th>
           <th class="w-32">UI</th>
           <th class="w-32">Strength</th>
@@ -27,7 +28,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in items" v-bind:key="item">
+        <tr v-for="(item, im) in items" v-bind:key="item">
           <!-- <td>{{ item[0] }}</td>
           <td>{{ item[1] }}</td>
           <td>{{ item[2] }}</td>
@@ -35,8 +36,14 @@
           <td>{{ item[4] }}</td>
           <td>{{ item[5] }}</td>
           <td>{{ item[6] }}</td> -->
-
-          <!-- <td>{{ item.UHML }}</td> -->
+          <td>{{ im }}</td>
+          <td>{{ item.UHML }}</td>
+          <td>{{ item.UI }}</td>
+          <td>{{ item.STRENGTH }}</td>
+          <td>{{ item.SFI }}</td>
+          <td>{{ item.MIC }}</td>
+          <td>{{ item.COLORGRADE }}</td>
+          <td>{{ item.TRASHID }}</td>
         </tr>
       </tbody>
     </table>
@@ -100,18 +107,25 @@ export default {
             //console.log(results);
 
             let restX2 = rowObject.map((x, ix) => {
-              return {
-                UHML: x['UHML'] != 'undefined',
-                UI: x['UI'] != 'undefined',
-                STRENGTH: x['Strength'] != 'undefined',
-                SFI: x['SFI'] != 'undefined',
-                MIC: ['Mic'] != 'undefined',
-                COLORGRADE: x['ColorGrade'] != 'undefined',
-                TRASHID: x['TrashID'] != 'undefined'
-              }
+              let UHML = x['UHML'];
+              let UI = x['UI'];
+              let STRENGTH = x['Strength'];
+              let SFI = x['SFI'];
+              let MIC = ['Mic'];
+              let COLORGRADE = x['ColorGrade'];
+              let TRASHID = x['TrashID']
+              return { UHML, UI, STRENGTH, SFI, MIC, COLORGRADE, TRASHID };
             });
             console.log(restX2);
+            self.items = restX2;
+            console.log(self.items);
+
+            //console.log(self.itemx2);
+            //self.itemx2 = self.items.map(x => x);
+            //console.log(self.itemx2);
+
             //console.log(self.items);
+            //undefined
 
             // let xw = {
             //   UHML: x['UHML'],

@@ -103,9 +103,6 @@ export default {
 
             let resultCtoDif = 0;
 
-            //let results = rowObject.map(x => x);
-            //console.log(results);
-
             let restX2 = rowObject.map((x, ix) => {
               let UHML = x['UHML'];
               let UI = x['UI'];
@@ -115,82 +112,9 @@ export default {
               let COLORGRADE = x['ColorGrade'];
               let TRASHID = x['TrashID']
               return { UHML, UI, STRENGTH, SFI, MIC, COLORGRADE, TRASHID };
-            });
-            console.log(restX2);
+            });            
             self.items = restX2;
-            console.log(self.items);
-
-            //console.log(self.itemx2);
-            //self.itemx2 = self.items.map(x => x);
-            //console.log(self.itemx2);
-
-            //console.log(self.items);
-            //undefined
-
-            // let xw = {
-            //   UHML: x['UHML'],
-            //   UI: x['UI'],
-            //   STRENGTH: x['Strength'],
-            //   SFI: x['SFI'],
-            //   MIC: ['Mic'],
-            //   COLORGRADE: x['ColorGrade'],
-            //   TRASHID: x['TrashID']
-            // };
-            // return xw;
-            //this.items.push(restX2);
-
-
-            //{
-            //console.log(x);
-            //colocar nombre de las columnas
-            /*return self.CaptureFolio.map((col, ol) => {
-              if (col.IdMpPt === x['Codigo']) {
-                if (x['Cantidad Fisica'] != 0) {
-                  resultCtoDif = (x['Cantidad Teorica'] - x['Cantidad Fisica']) * -1;
-                } else {
-                  resultCtoDif = 0;
-                }
-                return {
-                  IdCnsFolIntArt: col.IdCnsFolIntArt,
-                  IdFolInv: col.IdFolInv,
-                  IdMpPt: x['Codigo'],
-                  CantTeorica: x['Cantidad Teorica'],
-                  CantFis: x['Importe Teorico'],
-                  DifUniComp: x['Cantidad Fisica'],
-                  CtoProm: col.CtoProm,
-                  CtoDif: resultCtoDif,
-                  CtoTotalDif: col.CtoProm * x['Cantidad Fisica'],
-                  BitCaptManual: false,
-                  Almacen: col.Almacen,
-                  DescTipoInv: col.DescTipoInv,
-                  Descripcion: x['Descripción']
-                };
-              } else {
-                return 0;
-              }
-            })[ix];
-            */
-            //});
-
-
-
-            //obtenemos los datos de una array muy larga...
-            //los que son 'undefined', no se colocara en la nueva array...
-            /*let rx = self.CaptureFolio.map((x, col) => {
-              return results.filter(item => item)[col];
-            });
-
-            let resX = results.map(x => x)[0] !== 0 ? true : false; //!= 'undefined'
-            //validar el resultado...
-            if (resX) {
-              self.errorXarchivo = false;
-              //limpiamos el arrey.
-              self.CaptureFolio = [];
-              //Guardamos los nuevos Datos.
-              self.CaptureFolio = rx; //results;
-            } else {
-              self.errorXarchivo = true;
-            }*/
+            
             //var result = JSON.stringify(rowObject, undefined, 4);
             //console.log(result);
             //document.getElementById("jsondata").append(JSON.stringify(rowObject, undefined, 4));

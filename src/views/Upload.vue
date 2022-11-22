@@ -103,18 +103,18 @@ export default {
 
             let resultCtoDif = 0;
 
-            let restX2 = rowObject.map((x, ix) => {
+            let restX2 = rowObject.map((x) => {
               let UHML = x['UHML'];
               let UI = x['UI'];
               let STRENGTH = x['Strength'];
               let SFI = x['SFI'];
-              let MIC = ['Mic'];
+              let MIC = x['Mic'];
               let COLORGRADE = x['ColorGrade'];
-              let TRASHID = x['TrashID']
+              let TRASHID = x['TrashID'];
               return { UHML, UI, STRENGTH, SFI, MIC, COLORGRADE, TRASHID };
-            });            
+            });
             self.items = restX2;
-            
+
             //var result = JSON.stringify(rowObject, undefined, 4);
             //console.log(result);
             //document.getElementById("jsondata").append(JSON.stringify(rowObject, undefined, 4));

@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { useRouter } from 'vue-router';
 
@@ -6,7 +6,8 @@ import { useRouter } from 'vue-router';
 
 
 export const HVI = defineStore('HVI', () => {
-   
+        const apiRoute = 'http://localhost:8000/api/User/'
+
         const items = ref([])
         const subirExcel = () => {
             const input = document.getElementById("archivoExcel");
@@ -18,5 +19,6 @@ export const HVI = defineStore('HVI', () => {
         return {
               items
             , subirExcel
+            , apiRoute
         }
 })

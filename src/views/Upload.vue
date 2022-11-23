@@ -9,6 +9,9 @@
       <input type="file" class="form-control" id="import" style="height:0%;" aria-describedby="imporExcel"
         v-on:change="imporExcel($event)">
     </div>
+    <div>
+      <button @click="HVIRecap()">Obtener Recap</button>
+    </div>
 
     <button v-if="datos" v-on:click="probarExcel()" class=" h-16 w-16 bg-blue-600">Exportar datos</button>
     <button v-if="recap" v-on:click="generarRecap()" class=" h-16 w-16 bg-red-600">Generar RECAP</button>
@@ -54,6 +57,7 @@
 //import { HVI } from "../stores/HVI";
 //const value = HVI();
 //import { ref } from "vue";
+import axios from 'axios';
 
 import readXlsFile from "read-excel-file"
 import router from "@/router/index.js";
@@ -121,8 +125,17 @@ export default {
           });
         }
       }
+    },
 
-
+    HVIRecap() {
+      let self = this;
+      let jsons = {
+        HVIList : self.items
+      };
+      axios.post('http://localhost:8000/api/HVI',jsons).then(res => {
+        console.log(res);
+        if (res.status === 200) alert("Se enviaron los datos correctamente.");
+      });
     },
 
     probarExcel() {
